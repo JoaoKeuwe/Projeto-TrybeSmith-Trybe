@@ -6,6 +6,12 @@ const getAllProducts = async (): Promise<Product[]> => {
   return products;
 };
 
+const createAllProducts = async (name: string, amount: string): Promise<Product> => {
+  const products = await productsModel.createAllProducts(name, amount);
+  return products;
+};
+
 export default {
   getAllProducts,
+  createAllProducts,
 };
