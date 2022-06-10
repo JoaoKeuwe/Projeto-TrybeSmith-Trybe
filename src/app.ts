@@ -1,6 +1,10 @@
 import express from 'express';
 import productsController from './controllers/productsController';
 import validMiddlewareName, { validMiddlewareAmount } from './middlewares/createProductsMiddleware';
+import levelMiddleware from './middlewares/levelMiddleware';
+import passwordMiddleware from './middlewares/passwordMiddleware';
+import userNameMiddleware from './middlewares/userNameMiddlewares';
+import classeMiddleware from './middlewares/classeMiddlewares';
 
 const app = express();
 
@@ -11,8 +15,15 @@ app.post(
   '/products',
   validMiddlewareName,
   validMiddlewareAmount,
-
   productsController.createAllProducts,
+);
+
+app.post(
+  '/users',
+  userNameMiddleware,
+  classeMiddleware,
+  levelMiddleware,
+  passwordMiddleware,
 );
 
 export default app;
