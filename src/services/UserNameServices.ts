@@ -3,7 +3,8 @@ import token from '../middlewares/generateJWT';
 import User from '../interfaces/userInterface';
 
 const getUsers = async (newUser: User) => {
-  await userNameModel.getUsers(newUser);
-  return { token };
+  const id = await userNameModel.getUsers(newUser);
+  const jwt = token({ username: newUser.username, id });
+  return jwt;
 };
 export default { getUsers };

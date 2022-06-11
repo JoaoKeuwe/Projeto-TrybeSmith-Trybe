@@ -5,6 +5,7 @@ import levelMiddleware from './middlewares/levelMiddleware';
 import passwordMiddleware from './middlewares/passwordMiddleware';
 import userNameMiddleware from './middlewares/userNameMiddlewares';
 import classeMiddleware from './middlewares/classeMiddlewares';
+import userNameController from './controllers/userNameController';
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.post(
   classeMiddleware,
   levelMiddleware,
   passwordMiddleware,
+
+  userNameController.getUsers,
 );
 
 export default app;
