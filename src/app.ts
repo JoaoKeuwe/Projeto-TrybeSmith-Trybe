@@ -1,5 +1,6 @@
 import express from 'express';
 import productsController from './controllers/productsController';
+import ordersController from './controllers/ordersController';
 import validMiddlewareName, { validMiddlewareAmount } from './middlewares/createProductsMiddleware';
 import levelMiddleware from './middlewares/levelMiddleware';
 import passwordMiddleware from './middlewares/passwordMiddleware';
@@ -28,5 +29,7 @@ app.post(
 
   userNameController.getUsers,
 );
+
+app.get('/orders', ordersController.listAll);
 
 export default app;
